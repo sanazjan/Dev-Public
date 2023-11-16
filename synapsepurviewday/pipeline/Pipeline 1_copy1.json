@@ -1,0 +1,156 @@
+{
+	"name": "Pipeline 1_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "['entityId']"
+								},
+								"sink": {
+									"name": "entityId"
+								}
+							},
+							{
+								"source": {
+									"path": "['asOfDate']"
+								},
+								"sink": {
+									"name": "asOfDate"
+								}
+							},
+							{
+								"source": {
+									"path": "['isfin']"
+								},
+								"sink": {
+									"name": "isfin"
+								}
+							},
+							{
+								"source": {
+									"path": "['physicalRiskScore']"
+								},
+								"sink": {
+									"name": "physicalRiskScore",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['transitionRisk']['orderlyBelow2CScenario']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "riskpd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "['transitionRisk']['orderlyBelow2CScenario']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "riskpd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "['transitionRisk']['orderlyBelow2CScenario']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "riskpd3y"
+								}
+							},
+							{
+								"source": {
+									"path": "['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating1y']"
+								},
+								"sink": {
+									"name": "impliedRating1y",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "orderpd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "orderpd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "orderpd3y"
+								}
+							}
+						],
+						"collectionReference": "$['entities']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Jsonosfi",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "csvosfi",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-06-27T17:54:20Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

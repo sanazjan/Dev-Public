@@ -1,0 +1,17 @@
+{
+	"name": "Maanged Identity",
+	"properties": {
+		"content": {
+			"query": "--For Granting managed Identity, we need to \n--1- Login to the DB with AD account\n--2- run the following script for the resource name --> which now is Synapse account\n\nCREATE USER [synapsepurviewday] FROM EXTERNAL PROVIDER;\n\n--Then add resource name as a contribtutor in the access control for the DB in portal",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

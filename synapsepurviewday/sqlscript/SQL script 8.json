@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 8",
+	"properties": {
+		"content": {
+			"query": "IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'cosmossj'))\n    THROW 50000, 'As a prerequisite, create a credential with Azure Cosmos DB key in SECRET option:\n    CREATE CREDENTIAL [cosmossj]\n    WITH IDENTITY = \"SHARED ACCESS SIGNATURE'', SECRET = ''<Enter your Azure Cosmos DB key here>''', 0\nGO\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=cosmossj;Database=test',\n                OBJECT = 'testlink',\n                SERVER_CREDENTIAL = 'cosmossj'\n) AS [testlink]\n\n\n\n    CREATE CREDENTIAL [cosmossj]\n    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'b1tn2YPdQMT8S5h2DZxt3AydwZBzw81Q79xGTDzlmg7zRllQBbuNmBPy4nhw6uleIRt15TsDRALyACDbfra1Uw=='",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

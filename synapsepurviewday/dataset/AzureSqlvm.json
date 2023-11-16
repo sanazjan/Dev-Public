@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlvm",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLVm",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Fact",
+			"table": "Order"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

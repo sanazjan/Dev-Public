@@ -1,0 +1,17 @@
+{
+	"name": "SqlPool_fact",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "fact"
+		},
+		"sqlPool": {
+			"referenceName": "pspc_dw",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

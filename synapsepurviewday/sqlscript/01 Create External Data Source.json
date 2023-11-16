@@ -1,0 +1,17 @@
+{
+	"name": "01 Create External Data Source",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL DATA SOURCE AzureStorage_west_public\nWITH\n(  \n    TYPE = Hadoop\n,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.windows.net/'\n);",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sqlpool",
+				"poolName": "sqlpool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

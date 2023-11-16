@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "SELECT ta.name, co.name ,replace(replace(replace(replace('EXECUTE sp_rename ''<schemaName>.<tableName>.[<columnName>]'', ''<fixedColumnName>'', ''column''' ,'<schemaName>', schema_name(ta.schema_id)) ,'<tableName>', ta.name) ,'<columnName>', co.name) ,'<fixedColumnName>', replace(co.Name, ' ', '')) AS STATEMENTTOEXECUTE from sys.tables ta inner join sys.columns co on co.object_id = ta.object_id\n\nwhere co.name like '% %' order by ta.name, co.name",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sqlpool",
+				"poolName": "sqlpool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

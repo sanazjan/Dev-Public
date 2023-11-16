@@ -1,0 +1,228 @@
+{
+	"name": "Flattening with Loop",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "jsonfiles",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "JsonReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy data2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "JsonSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"wildcardFolderPath": "test",
+										"wildcardFileName": "*",
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "JsonReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".csv"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "['entityId']"
+											},
+											"sink": {
+												"name": "entityId",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['asOfDate']"
+											},
+											"sink": {
+												"name": "asOfDate",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['isfin']"
+											},
+											"sink": {
+												"name": "isfin",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['physicalRiskScore']"
+											},
+											"sink": {
+												"name": "physicalRiskScore",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['transitionRisk']['orderlyBelow2CScenario']['pd']['pd1y']"
+											},
+											"sink": {
+												"name": "pd1y",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['transitionRisk']['orderlyBelow2CScenario']['pd']['pd2y']"
+											},
+											"sink": {
+												"name": "pd2y",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['transitionRisk']['orderlyBelow2CScenario']['pd']['pd3y']"
+											},
+											"sink": {
+												"name": "pd3y",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['resultData']['driversMain']"
+											},
+											"sink": {
+												"name": "driversMain",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['resultData']['driversTransition']['driversEntityPaths']"
+											},
+											"sink": {
+												"name": "driversEntityPaths",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['resultData']['driversTransition']['driversIndustryPaths']"
+											},
+											"sink": {
+												"name": "driversIndustryPaths",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "['resultData']['driversTransition']['driversRegionPaths']"
+											},
+											"sink": {
+												"name": "driversRegionPaths",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['scenarioCategory']"
+											},
+											"sink": {
+												"name": "scenarioCategory",
+												"type": "String"
+											}
+										}
+									],
+									"collectionReference": "$['entities']"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Jsonosfi",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "csvosfi",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-06-28T15:26:58Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

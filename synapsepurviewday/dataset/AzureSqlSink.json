@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlSink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "osfi",
+			"table": "test"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

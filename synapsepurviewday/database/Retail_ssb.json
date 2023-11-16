@@ -1,0 +1,27 @@
+{
+	"name": "Retail_ssb",
+	"properties": {
+		"Name": "Retail_ssb",
+		"EntityType": "DATABASE",
+		"Description": "",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"Retail\",\"Version\":\"0.1.0\"}}}",
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://raw@stgsynapseacc.dfs.core.windows.net/test",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "synapsepurviewday-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "ceb4d88c-a194-48ba-9cce-103371bc8f99"
+	},
+	"type": "DATABASE"
+}

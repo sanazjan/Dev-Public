@@ -1,0 +1,72 @@
+{
+	"name": "Notebook 2",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "30e8ea7f-2fd8-406b-852b-abc889999099"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "python"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"source": [
+					"# NOTE\n",
+					"\n",
+					"For Spark 3 Cosmos DB connector has slightly different configuration. Please select different snippest if a Spark 3.1 + pool is attached."
+				]
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"# Write a Spark DataFrame into a Cosmos DB container\n",
+					"# To select a preferred list of regions in a multi-region Cosmos DB account, add .option(\"spark.cosmos.preferredRegions\", \"<Region1>,<Region2>\")\n",
+					"\n",
+					"# For Spark 2.4\n",
+					"YOURDATAFRAME.write\\\n",
+					"    .format(\"cosmos.oltp\")\\\n",
+					"    .option(\"spark.synapse.linkedService\", \"CosmosDbMongoDb1\")\\\n",
+					"    .option(\"spark.cosmos.container\", \"testlink\")\\\n",
+					"    .option(\"spark.cosmos.write.upsertEnabled\", \"true\")\\\n",
+					"    .mode('append')\\\n",
+					"    .save()\n",
+					"\n",
+					"# For Spark 3.1 +\n",
+					"# YOURDATAFRAME.write\\\n",
+					"#     .format(\"cosmos.oltp\")\\\n",
+					"#     .option(\"spark.synapse.linkedService\", \"CosmosDbMongoDb1\")\\\n",
+					"#     .option(\"spark.cosmos.container\", \"testlink\")\\\n",
+					"#     .option(\"spark.cosmos.write.strategy\", \"ItemOverwrite\")\\\n",
+					"#     .option(\"spark.cosmos.write.bulk.enabled\", \"true\")\\\n",
+					"#     .mode('append')\\\n",
+					"#     .save()"
+				]
+			}
+		]
+	}
+}

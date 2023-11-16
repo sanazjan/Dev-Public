@@ -1,0 +1,17 @@
+{
+	"name": "02 Create Data Format",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL FILE FORMAT TextFileFormat\nWITH\n(   FORMAT_TYPE = DELIMITEDTEXT\n,    FORMAT_OPTIONS    (   FIELD_TERMINATOR = '|'\n                    ,    STRING_DELIMITER = ''\n                    ,    DATE_FORMAT         = 'yyyy-MM-dd HH:mm:ss.fff'\n                    ,    USE_TYPE_DEFAULT = FALSE\n                    )\n);",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sqlpool",
+				"poolName": "sqlpool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

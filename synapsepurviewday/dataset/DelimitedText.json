@@ -1,0 +1,68 @@
+{
+	"name": "DelimitedText",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "land",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "osfi"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "10",
+				"type": "String"
+			},
+			{
+				"name": "6",
+				"type": "String"
+			},
+			{
+				"name": "12",
+				"type": "String"
+			},
+			{
+				"name": "2",
+				"type": "String"
+			},
+			{
+				"name": "14",
+				"type": "String"
+			},
+			{
+				"name": "george.bluth@reqres.in",
+				"type": "String"
+			},
+			{
+				"name": "George",
+				"type": "String"
+			},
+			{
+				"name": "Bluth",
+				"type": "String"
+			},
+			{
+				"name": "https://reqres.in/img/faces/1-image.jpg",
+				"type": "String"
+			},
+			{
+				"name": "https://reqres.in/#support-heading",
+				"type": "String"
+			},
+			{
+				"name": "To keep ReqRes free, contributions towards server costs are appreciated!",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

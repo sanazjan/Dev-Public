@@ -1,0 +1,1020 @@
+{
+	"name": "July7th_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_July7thDemo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "raw2.json",
+				"folderPath": "landing/CIFA",
+				"fileSystem": "bronze"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"scenarioCategory": {
+					"type": "string"
+				},
+				"entities": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"entityId": {
+								"type": "string"
+							},
+							"asOfDate": {
+								"type": "string"
+							},
+							"isfin": {
+								"type": "string"
+							},
+							"physicalRiskScore": {
+								"type": "null"
+							},
+							"transitionRisk": {
+								"type": "object",
+								"properties": {
+									"orderlyBelow2CScenario": {
+										"type": "object",
+										"properties": {
+											"pd": {
+												"type": "object",
+												"properties": {
+													"pd1y": {
+														"type": "string"
+													},
+													"pd2y": {
+														"type": "string"
+													},
+													"pd3y": {
+														"type": "string"
+													},
+													"pd4y": {
+														"type": "string"
+													},
+													"pd5y": {
+														"type": "string"
+													},
+													"pd6y": {
+														"type": "string"
+													},
+													"pd7y": {
+														"type": "string"
+													},
+													"pd8y": {
+														"type": "string"
+													},
+													"pd9y": {
+														"type": "string"
+													},
+													"pd10y": {
+														"type": "string"
+													},
+													"pd11y": {
+														"type": "string"
+													},
+													"pd12y": {
+														"type": "string"
+													},
+													"pd13y": {
+														"type": "string"
+													},
+													"pd14y": {
+														"type": "string"
+													},
+													"pd15y": {
+														"type": "string"
+													},
+													"pd16y": {
+														"type": "string"
+													},
+													"pd17y": {
+														"type": "string"
+													},
+													"pd18y": {
+														"type": "string"
+													},
+													"pd19y": {
+														"type": "string"
+													},
+													"pd20y": {
+														"type": "string"
+													},
+													"pd21y": {
+														"type": "string"
+													},
+													"pd22y": {
+														"type": "string"
+													},
+													"pd23y": {
+														"type": "string"
+													},
+													"pd24y": {
+														"type": "string"
+													},
+													"pd25y": {
+														"type": "string"
+													},
+													"pd26y": {
+														"type": "string"
+													},
+													"pd27y": {
+														"type": "string"
+													},
+													"pd28y": {
+														"type": "string"
+													},
+													"pd29y": {
+														"type": "string"
+													},
+													"pd30y": {
+														"type": "string"
+													}
+												}
+											},
+											"impliedRating": {
+												"type": "object",
+												"properties": {
+													"impliedRating1y": {
+														"type": "string"
+													},
+													"impliedRating2y": {
+														"type": "string"
+													},
+													"impliedRating3y": {
+														"type": "string"
+													},
+													"impliedRating4y": {
+														"type": "string"
+													},
+													"impliedRating5y": {
+														"type": "string"
+													},
+													"impliedRating6y": {
+														"type": "string"
+													},
+													"impliedRating7y": {
+														"type": "string"
+													},
+													"impliedRating8y": {
+														"type": "string"
+													},
+													"impliedRating9y": {
+														"type": "string"
+													},
+													"impliedRating10y": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									},
+									"orderlyNetZero2050Scenario": {
+										"type": "object",
+										"properties": {
+											"pd": {
+												"type": "object",
+												"properties": {
+													"pd1y": {
+														"type": "string"
+													},
+													"pd2y": {
+														"type": "string"
+													},
+													"pd3y": {
+														"type": "string"
+													},
+													"pd4y": {
+														"type": "string"
+													},
+													"pd5y": {
+														"type": "string"
+													},
+													"pd6y": {
+														"type": "string"
+													},
+													"pd7y": {
+														"type": "string"
+													},
+													"pd8y": {
+														"type": "string"
+													},
+													"pd9y": {
+														"type": "string"
+													},
+													"pd10y": {
+														"type": "string"
+													},
+													"pd11y": {
+														"type": "string"
+													},
+													"pd12y": {
+														"type": "string"
+													},
+													"pd13y": {
+														"type": "string"
+													},
+													"pd14y": {
+														"type": "string"
+													},
+													"pd15y": {
+														"type": "string"
+													},
+													"pd16y": {
+														"type": "string"
+													},
+													"pd17y": {
+														"type": "string"
+													},
+													"pd18y": {
+														"type": "string"
+													},
+													"pd19y": {
+														"type": "string"
+													},
+													"pd20y": {
+														"type": "string"
+													},
+													"pd21y": {
+														"type": "string"
+													},
+													"pd22y": {
+														"type": "string"
+													},
+													"pd23y": {
+														"type": "string"
+													},
+													"pd24y": {
+														"type": "string"
+													},
+													"pd25y": {
+														"type": "string"
+													},
+													"pd26y": {
+														"type": "string"
+													},
+													"pd27y": {
+														"type": "string"
+													},
+													"pd28y": {
+														"type": "string"
+													},
+													"pd29y": {
+														"type": "string"
+													},
+													"pd30y": {
+														"type": "string"
+													}
+												}
+											},
+											"impliedRating": {
+												"type": "object",
+												"properties": {
+													"impliedRating1y": {
+														"type": "string"
+													},
+													"impliedRating2y": {
+														"type": "string"
+													},
+													"impliedRating3y": {
+														"type": "string"
+													},
+													"impliedRating4y": {
+														"type": "string"
+													},
+													"impliedRating5y": {
+														"type": "string"
+													},
+													"impliedRating6y": {
+														"type": "string"
+													},
+													"impliedRating7y": {
+														"type": "string"
+													},
+													"impliedRating8y": {
+														"type": "string"
+													},
+													"impliedRating9y": {
+														"type": "string"
+													},
+													"impliedRating10y": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									},
+									"disorderlyDelayedTransitionScenario": {
+										"type": "object",
+										"properties": {
+											"pd": {
+												"type": "object",
+												"properties": {
+													"pd1y": {
+														"type": "string"
+													},
+													"pd2y": {
+														"type": "string"
+													},
+													"pd3y": {
+														"type": "string"
+													},
+													"pd4y": {
+														"type": "string"
+													},
+													"pd5y": {
+														"type": "string"
+													},
+													"pd6y": {
+														"type": "string"
+													},
+													"pd7y": {
+														"type": "string"
+													},
+													"pd8y": {
+														"type": "string"
+													},
+													"pd9y": {
+														"type": "string"
+													},
+													"pd10y": {
+														"type": "string"
+													},
+													"pd11y": {
+														"type": "string"
+													},
+													"pd12y": {
+														"type": "string"
+													},
+													"pd13y": {
+														"type": "string"
+													},
+													"pd14y": {
+														"type": "string"
+													},
+													"pd15y": {
+														"type": "string"
+													},
+													"pd16y": {
+														"type": "string"
+													},
+													"pd17y": {
+														"type": "string"
+													},
+													"pd18y": {
+														"type": "string"
+													},
+													"pd19y": {
+														"type": "string"
+													},
+													"pd20y": {
+														"type": "string"
+													},
+													"pd21y": {
+														"type": "string"
+													},
+													"pd22y": {
+														"type": "string"
+													},
+													"pd23y": {
+														"type": "string"
+													},
+													"pd24y": {
+														"type": "string"
+													},
+													"pd25y": {
+														"type": "string"
+													},
+													"pd26y": {
+														"type": "string"
+													},
+													"pd27y": {
+														"type": "string"
+													},
+													"pd28y": {
+														"type": "string"
+													},
+													"pd29y": {
+														"type": "string"
+													},
+													"pd30y": {
+														"type": "string"
+													}
+												}
+											},
+											"impliedRating": {
+												"type": "object",
+												"properties": {
+													"impliedRating1y": {
+														"type": "string"
+													},
+													"impliedRating2y": {
+														"type": "string"
+													},
+													"impliedRating3y": {
+														"type": "string"
+													},
+													"impliedRating4y": {
+														"type": "string"
+													},
+													"impliedRating5y": {
+														"type": "string"
+													},
+													"impliedRating6y": {
+														"type": "string"
+													},
+													"impliedRating7y": {
+														"type": "string"
+													},
+													"impliedRating8y": {
+														"type": "string"
+													},
+													"impliedRating9y": {
+														"type": "string"
+													},
+													"impliedRating10y": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									},
+									"disorderlyDivergentNetZeroScenario": {
+										"type": "object",
+										"properties": {
+											"pd": {
+												"type": "object",
+												"properties": {
+													"pd1y": {
+														"type": "string"
+													},
+													"pd2y": {
+														"type": "string"
+													},
+													"pd3y": {
+														"type": "string"
+													},
+													"pd4y": {
+														"type": "string"
+													},
+													"pd5y": {
+														"type": "string"
+													},
+													"pd6y": {
+														"type": "string"
+													},
+													"pd7y": {
+														"type": "string"
+													},
+													"pd8y": {
+														"type": "string"
+													},
+													"pd9y": {
+														"type": "string"
+													},
+													"pd10y": {
+														"type": "string"
+													},
+													"pd11y": {
+														"type": "string"
+													},
+													"pd12y": {
+														"type": "string"
+													},
+													"pd13y": {
+														"type": "string"
+													},
+													"pd14y": {
+														"type": "string"
+													},
+													"pd15y": {
+														"type": "string"
+													},
+													"pd16y": {
+														"type": "string"
+													},
+													"pd17y": {
+														"type": "string"
+													},
+													"pd18y": {
+														"type": "string"
+													},
+													"pd19y": {
+														"type": "string"
+													},
+													"pd20y": {
+														"type": "string"
+													},
+													"pd21y": {
+														"type": "string"
+													},
+													"pd22y": {
+														"type": "string"
+													},
+													"pd23y": {
+														"type": "string"
+													},
+													"pd24y": {
+														"type": "string"
+													},
+													"pd25y": {
+														"type": "string"
+													},
+													"pd26y": {
+														"type": "string"
+													},
+													"pd27y": {
+														"type": "string"
+													},
+													"pd28y": {
+														"type": "string"
+													},
+													"pd29y": {
+														"type": "string"
+													},
+													"pd30y": {
+														"type": "string"
+													}
+												}
+											},
+											"impliedRating": {
+												"type": "object",
+												"properties": {
+													"impliedRating1y": {
+														"type": "string"
+													},
+													"impliedRating2y": {
+														"type": "string"
+													},
+													"impliedRating3y": {
+														"type": "string"
+													},
+													"impliedRating4y": {
+														"type": "string"
+													},
+													"impliedRating5y": {
+														"type": "string"
+													},
+													"impliedRating6y": {
+														"type": "string"
+													},
+													"impliedRating7y": {
+														"type": "string"
+													},
+													"impliedRating8y": {
+														"type": "string"
+													},
+													"impliedRating9y": {
+														"type": "string"
+													},
+													"impliedRating10y": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									},
+									"hotHouseCurrentPoliciesScenario": {
+										"type": "object",
+										"properties": {
+											"pd": {
+												"type": "object",
+												"properties": {
+													"pd1y": {
+														"type": "string"
+													},
+													"pd2y": {
+														"type": "string"
+													},
+													"pd3y": {
+														"type": "string"
+													},
+													"pd4y": {
+														"type": "string"
+													},
+													"pd5y": {
+														"type": "string"
+													},
+													"pd6y": {
+														"type": "string"
+													},
+													"pd7y": {
+														"type": "string"
+													},
+													"pd8y": {
+														"type": "string"
+													},
+													"pd9y": {
+														"type": "string"
+													},
+													"pd10y": {
+														"type": "string"
+													},
+													"pd11y": {
+														"type": "string"
+													},
+													"pd12y": {
+														"type": "string"
+													},
+													"pd13y": {
+														"type": "string"
+													},
+													"pd14y": {
+														"type": "string"
+													},
+													"pd15y": {
+														"type": "string"
+													},
+													"pd16y": {
+														"type": "string"
+													},
+													"pd17y": {
+														"type": "string"
+													},
+													"pd18y": {
+														"type": "string"
+													},
+													"pd19y": {
+														"type": "string"
+													},
+													"pd20y": {
+														"type": "string"
+													},
+													"pd21y": {
+														"type": "string"
+													},
+													"pd22y": {
+														"type": "string"
+													},
+													"pd23y": {
+														"type": "string"
+													},
+													"pd24y": {
+														"type": "string"
+													},
+													"pd25y": {
+														"type": "string"
+													},
+													"pd26y": {
+														"type": "string"
+													},
+													"pd27y": {
+														"type": "string"
+													},
+													"pd28y": {
+														"type": "string"
+													},
+													"pd29y": {
+														"type": "string"
+													},
+													"pd30y": {
+														"type": "string"
+													}
+												}
+											},
+											"impliedRating": {
+												"type": "object",
+												"properties": {
+													"impliedRating1y": {
+														"type": "string"
+													},
+													"impliedRating2y": {
+														"type": "string"
+													},
+													"impliedRating3y": {
+														"type": "string"
+													},
+													"impliedRating4y": {
+														"type": "string"
+													},
+													"impliedRating5y": {
+														"type": "string"
+													},
+													"impliedRating6y": {
+														"type": "string"
+													},
+													"impliedRating7y": {
+														"type": "string"
+													},
+													"impliedRating8y": {
+														"type": "string"
+													},
+													"impliedRating9y": {
+														"type": "string"
+													},
+													"impliedRating10y": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									},
+									"hotHouseNDCScenario": {
+										"type": "object",
+										"properties": {
+											"pd": {
+												"type": "object",
+												"properties": {
+													"pd1y": {
+														"type": "string"
+													},
+													"pd2y": {
+														"type": "string"
+													},
+													"pd3y": {
+														"type": "string"
+													},
+													"pd4y": {
+														"type": "string"
+													},
+													"pd5y": {
+														"type": "string"
+													},
+													"pd6y": {
+														"type": "string"
+													},
+													"pd7y": {
+														"type": "string"
+													},
+													"pd8y": {
+														"type": "string"
+													},
+													"pd9y": {
+														"type": "string"
+													},
+													"pd10y": {
+														"type": "string"
+													},
+													"pd11y": {
+														"type": "string"
+													},
+													"pd12y": {
+														"type": "string"
+													},
+													"pd13y": {
+														"type": "string"
+													},
+													"pd14y": {
+														"type": "string"
+													},
+													"pd15y": {
+														"type": "string"
+													},
+													"pd16y": {
+														"type": "string"
+													},
+													"pd17y": {
+														"type": "string"
+													},
+													"pd18y": {
+														"type": "string"
+													},
+													"pd19y": {
+														"type": "string"
+													},
+													"pd20y": {
+														"type": "string"
+													},
+													"pd21y": {
+														"type": "string"
+													},
+													"pd22y": {
+														"type": "string"
+													},
+													"pd23y": {
+														"type": "string"
+													},
+													"pd24y": {
+														"type": "string"
+													},
+													"pd25y": {
+														"type": "string"
+													},
+													"pd26y": {
+														"type": "string"
+													},
+													"pd27y": {
+														"type": "string"
+													},
+													"pd28y": {
+														"type": "string"
+													},
+													"pd29y": {
+														"type": "string"
+													},
+													"pd30y": {
+														"type": "string"
+													}
+												}
+											},
+											"impliedRating": {
+												"type": "object",
+												"properties": {
+													"impliedRating1y": {
+														"type": "string"
+													},
+													"impliedRating2y": {
+														"type": "string"
+													},
+													"impliedRating3y": {
+														"type": "string"
+													},
+													"impliedRating4y": {
+														"type": "string"
+													},
+													"impliedRating5y": {
+														"type": "string"
+													},
+													"impliedRating6y": {
+														"type": "string"
+													},
+													"impliedRating7y": {
+														"type": "string"
+													},
+													"impliedRating8y": {
+														"type": "string"
+													},
+													"impliedRating9y": {
+														"type": "string"
+													},
+													"impliedRating10y": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"baseline": {
+								"type": "object",
+								"properties": {
+									"pd": {
+										"type": "object",
+										"properties": {
+											"pd1y": {
+												"type": "string"
+											},
+											"pd2y": {
+												"type": "string"
+											},
+											"pd3y": {
+												"type": "string"
+											},
+											"pd4y": {
+												"type": "string"
+											},
+											"pd5y": {
+												"type": "string"
+											},
+											"pd6y": {
+												"type": "string"
+											},
+											"pd7y": {
+												"type": "string"
+											},
+											"pd8y": {
+												"type": "string"
+											},
+											"pd9y": {
+												"type": "string"
+											},
+											"pd10y": {
+												"type": "string"
+											},
+											"pd11y": {
+												"type": "string"
+											},
+											"pd12y": {
+												"type": "string"
+											},
+											"pd13y": {
+												"type": "string"
+											},
+											"pd14y": {
+												"type": "string"
+											},
+											"pd15y": {
+												"type": "string"
+											},
+											"pd16y": {
+												"type": "string"
+											},
+											"pd17y": {
+												"type": "string"
+											},
+											"pd18y": {
+												"type": "string"
+											},
+											"pd19y": {
+												"type": "string"
+											},
+											"pd20y": {
+												"type": "string"
+											},
+											"pd21y": {
+												"type": "string"
+											},
+											"pd22y": {
+												"type": "string"
+											},
+											"pd23y": {
+												"type": "string"
+											},
+											"pd24y": {
+												"type": "string"
+											},
+											"pd25y": {
+												"type": "string"
+											},
+											"pd26y": {
+												"type": "string"
+											},
+											"pd27y": {
+												"type": "string"
+											},
+											"pd28y": {
+												"type": "string"
+											},
+											"pd29y": {
+												"type": "string"
+											},
+											"pd30y": {
+												"type": "string"
+											}
+										}
+									},
+									"impliedRating": {
+										"type": "object",
+										"properties": {
+											"impliedRating1y": {
+												"type": "string"
+											},
+											"impliedRating2y": {
+												"type": "string"
+											},
+											"impliedRating3y": {
+												"type": "string"
+											},
+											"impliedRating4y": {
+												"type": "string"
+											},
+											"impliedRating5y": {
+												"type": "string"
+											},
+											"impliedRating6y": {
+												"type": "string"
+											},
+											"impliedRating7y": {
+												"type": "string"
+											},
+											"impliedRating8y": {
+												"type": "string"
+											},
+											"impliedRating9y": {
+												"type": "string"
+											},
+											"impliedRating10y": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							},
+							"resultData": {
+								"type": "object",
+								"properties": {
+									"driversMain": {
+										"type": "string"
+									},
+									"driversTransition": {
+										"type": "object",
+										"properties": {
+											"driversEntityPaths": {
+												"type": "string"
+											},
+											"driversIndustryPaths": {
+												"type": "string"
+											},
+											"driversRegionPaths": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

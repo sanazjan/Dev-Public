@@ -1,0 +1,16 @@
+{
+	"name": "pspcsql",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=azuresqlvm;initial catalog=WideWorldImportersDW;user id=sanazjan",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmZGM5ZmFlOS1hNTVjLTRlYzctYTY2ZS1lY2Y0ZjYwOWY2N2YiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

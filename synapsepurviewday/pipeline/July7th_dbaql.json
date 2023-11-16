@@ -1,0 +1,2370 @@
+{
+	"name": "July7th_dbaql",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data between ADLS containers",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['scenarioCategory']"
+								},
+								"sink": {
+									"name": "scenarioCategory"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['entityId']"
+								},
+								"sink": {
+									"name": "entityId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['asOfDate']"
+								},
+								"sink": {
+									"name": "asOfDate"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['isfin']"
+								},
+								"sink": {
+									"name": "isfin"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['physicalRiskScore']"
+								},
+								"sink": {
+									"name": "physicalRiskScore"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd11y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd11y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd12y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd12y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd13y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd13y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd14y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd14y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd15y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd15y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd16y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd16y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd17y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd17y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd18y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd18y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd19y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd19y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd20y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd20y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd21y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd21y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd22y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd22y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd23y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd23y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd24y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd24y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd25y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd25y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd26y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd26y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd27y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd27y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd28y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd28y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd29y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd29y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['pd']['pd30y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_pd_pd30y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyBelow2CScenario']['impliedRating']['impliedRating10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyBelow2CScenario_impliedRating_impliedRating10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd11y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd11y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd12y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd12y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd13y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd13y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd14y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd14y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd15y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd15y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd16y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd16y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd17y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd17y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd18y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd18y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd19y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd19y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd20y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd20y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd21y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd21y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd22y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd22y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd23y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd23y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd24y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd24y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd25y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd25y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd26y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd26y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd27y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd27y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd28y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd28y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd29y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd29y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['pd']['pd30y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_pd_pd30y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['orderlyNetZero2050Scenario']['impliedRating']['impliedRating10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_orderlyNetZero2050Scenario_impliedRating_impliedRating10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd11y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd11y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd12y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd12y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd13y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd13y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd14y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd14y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd15y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd15y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd16y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd16y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd17y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd17y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd18y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd18y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd19y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd19y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd20y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd20y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd21y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd21y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd22y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd22y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd23y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd23y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd24y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd24y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd25y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd25y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd26y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd26y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd27y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd27y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd28y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd28y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd29y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd29y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['pd']['pd30y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_pd_pd30y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDelayedTransitionScenario']['impliedRating']['impliedRating10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDelayedTransitionScenario_impliedRating_impliedRating10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd11y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd11y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd12y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd12y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd13y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd13y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd14y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd14y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd15y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd15y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd16y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd16y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd17y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd17y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd18y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd18y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd19y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd19y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd20y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd20y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd21y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd21y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd22y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd22y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd23y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd23y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd24y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd24y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd25y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd25y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd26y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd26y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd27y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd27y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd28y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd28y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd29y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd29y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['pd']['pd30y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_pd_pd30y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['disorderlyDivergentNetZeroScenario']['impliedRating']['impliedRating10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_disorderlyDivergentNetZeroScenario_impliedRating_impliedRating10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd11y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd11y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd12y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd12y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd13y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd13y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd14y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd14y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd15y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd15y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd16y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd16y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd17y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd17y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd18y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd18y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd19y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd19y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd20y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd20y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd21y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd21y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd22y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd22y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd23y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd23y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd24y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd24y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd25y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd25y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd26y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd26y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd27y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd27y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd28y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd28y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd29y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd29y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['pd']['pd30y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_pd_pd30y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseCurrentPoliciesScenario']['impliedRating']['impliedRating10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseCurrentPoliciesScenario_impliedRating_impliedRating10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd11y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd11y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd12y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd12y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd13y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd13y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd14y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd14y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd15y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd15y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd16y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd16y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd17y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd17y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd18y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd18y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd19y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd19y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd20y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd20y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd21y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd21y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd22y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd22y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd23y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd23y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd24y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd24y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd25y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd25y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd26y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd26y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd27y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd27y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd28y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd28y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd29y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd29y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['pd']['pd30y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_pd_pd30y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['transitionRisk']['hotHouseNDCScenario']['impliedRating']['impliedRating10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['transitionRisk_hotHouseNDCScenario_impliedRating_impliedRating10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd11y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd11y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd12y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd12y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd13y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd13y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd14y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd14y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd15y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd15y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd16y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd16y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd17y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd17y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd18y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd18y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd19y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd19y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd20y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd20y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd21y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd21y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd22y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd22y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd23y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd23y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd24y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd24y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd25y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd25y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd26y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd26y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd27y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd27y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd28y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd28y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd29y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd29y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['pd']['pd30y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_pd_pd30y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating1y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating1y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating2y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating2y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating3y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating3y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating4y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating4y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating5y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating5y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating6y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating6y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating7y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating7y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating8y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating8y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating9y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating9y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['baseline']['impliedRating']['impliedRating10y']"
+								},
+								"sink": {
+									"name": "entities'][0]['baseline_impliedRating_impliedRating10y"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['resultData']['driversMain']"
+								},
+								"sink": {
+									"name": "driversMain"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['resultData']['driversTransition']['driversEntityPaths']"
+								},
+								"sink": {
+									"name": "driversEntityPaths"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['resultData']['driversTransition']['driversIndustryPaths']"
+								},
+								"sink": {
+									"name": "driversIndustryPaths"
+								}
+							},
+							{
+								"source": {
+									"path": "$['entities'][0]['resultData']['driversTransition']['driversRegionPaths']"
+								},
+								"sink": {
+									"name": "driversRegionPaths"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "July7th_dest",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-07-07T17:47:20Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

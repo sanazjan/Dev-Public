@@ -1,0 +1,87 @@
+{
+	"name": "Dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json",
+						"type": "DatasetReference"
+					},
+					"name": "source"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flattenentities"
+				},
+				{
+					"name": "flatten1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          scenarioCategory as string,",
+				"          entities as (entityId as string, asOfDate as string, isfin as string, physicalRiskScore as string, transitionRisk as (orderlyBelow2CScenario as (pd as (pd1y as string, pd2y as string, pd3y as string, pd4y as string, pd5y as string, pd6y as string, pd7y as string, pd8y as string, pd9y as string, pd10y as string, pd11y as string, pd12y as string, pd13y as string, pd14y as string, pd15y as string, pd16y as string, pd17y as string, pd18y as string, pd19y as string, pd20y as string, pd21y as string, pd22y as string, pd23y as string, pd24y as string, pd25y as string, pd26y as string, pd27y as string, pd28y as string, pd29y as string, pd30y as string), impliedRating as (impliedRating1y as string, impliedRating2y as string, impliedRating3y as string, impliedRating4y as string, impliedRating5y as string, impliedRating6y as string, impliedRating7y as string, impliedRating8y as string, impliedRating9y as string, impliedRating10y as string)), orderlyNetZero2050Scenario as (pd as (pd1y as string, pd2y as string, pd3y as string, pd4y as string, pd5y as string, pd6y as string, pd7y as string, pd8y as string, pd9y as string, pd10y as string, pd11y as string, pd12y as string, pd13y as string, pd14y as string, pd15y as string, pd16y as string, pd17y as string, pd18y as string, pd19y as string, pd20y as string, pd21y as string, pd22y as string, pd23y as string, pd24y as string, pd25y as string, pd26y as string, pd27y as string, pd28y as string, pd29y as string, pd30y as string), impliedRating as (impliedRating1y as string, impliedRating2y as string, impliedRating3y as string, impliedRating4y as string, impliedRating5y as string, impliedRating6y as string, impliedRating7y as string, impliedRating8y as string, impliedRating9y as string, impliedRating10y as string)), disorderlyDelayedTransitionScenario as (pd as (pd1y as string, pd2y as string, pd3y as string, pd4y as string, pd5y as string, pd6y as string, pd7y as string, pd8y as string, pd9y as string, pd10y as string, pd11y as string, pd12y as string, pd13y as string, pd14y as string, pd15y as string, pd16y as string, pd17y as string, pd18y as string, pd19y as string, pd20y as string, pd21y as string, pd22y as string, pd23y as string, pd24y as string, pd25y as string, pd26y as string, pd27y as string, pd28y as string, pd29y as string, pd30y as string), impliedRating as (impliedRating1y as string, impliedRating2y as string, impliedRating3y as string, impliedRating4y as string, impliedRating5y as string, impliedRating6y as string, impliedRating7y as string, impliedRating8y as string, impliedRating9y as string, impliedRating10y as string)), disorderlyDivergentNetZeroScenario as (pd as (pd1y as string, pd2y as string, pd3y as string, pd4y as string, pd5y as string, pd6y as string, pd7y as string, pd8y as string, pd9y as string, pd10y as string, pd11y as string, pd12y as string, pd13y as string, pd14y as string, pd15y as string, pd16y as string, pd17y as string, pd18y as string, pd19y as string, pd20y as string, pd21y as string, pd22y as string, pd23y as string, pd24y as string, pd25y as string, pd26y as string, pd27y as string, pd28y as string, pd29y as string, pd30y as string), impliedRating as (impliedRating1y as string, impliedRating2y as string, impliedRating3y as string, impliedRating4y as string, impliedRating5y as string, impliedRating6y as string, impliedRating7y as string, impliedRating8y as string, impliedRating9y as string, impliedRating10y as string)), hotHouseCurrentPoliciesScenario as (pd as (pd1y as string, pd2y as string, pd3y as string, pd4y as string, pd5y as string, pd6y as string, pd7y as string, pd8y as string, pd9y as string, pd10y as string, pd11y as string, pd12y as string, pd13y as string, pd14y as string, pd15y as string, pd16y as string, pd17y as string, pd18y as string, pd19y as string, pd20y as string, pd21y as string, pd22y as string, pd23y as string, pd24y as string, pd25y as string, pd26y as string, pd27y as string, pd28y as string, pd29y as string, pd30y as string), impliedRating as (impliedRating1y as string, impliedRating2y as string, impliedRating3y as string, impliedRating4y as string, impliedRating5y as string, impliedRating6y as string, impliedRating7y as string, impliedRating8y as string, impliedRating9y as string, impliedRating10y as string)), hotHouseNDCScenario as (pd as (pd1y as string, pd2y as string, pd3y as string, pd4y as string, pd5y as string, pd6y as string, pd7y as string, pd8y as string, pd9y as string, pd10y as string, pd11y as string, pd12y as string, pd13y as string, pd14y as string, pd15y as string, pd16y as string, pd17y as string, pd18y as string, pd19y as string, pd20y as string, pd21y as string, pd22y as string, pd23y as string, pd24y as string, pd25y as string, pd26y as string, pd27y as string, pd28y as string, pd29y as string, pd30y as string), impliedRating as (impliedRating1y as string, impliedRating2y as string, impliedRating3y as string, impliedRating4y as string, impliedRating5y as string, impliedRating6y as string, impliedRating7y as string, impliedRating8y as string, impliedRating9y as string, impliedRating10y as string))), baseline as (pd as (pd1y as string, pd2y as string, pd3y as string, pd4y as string, pd5y as string, pd6y as string, pd7y as string, pd8y as string, pd9y as string, pd10y as string, pd11y as string, pd12y as string, pd13y as string, pd14y as string, pd15y as string, pd16y as string, pd17y as string, pd18y as string, pd19y as string, pd20y as string, pd21y as string, pd22y as string, pd23y as string, pd24y as string, pd25y as string, pd26y as string, pd27y as string, pd28y as string, pd29y as string, pd30y as string), impliedRating as (impliedRating1y as string, impliedRating2y as string, impliedRating3y as string, impliedRating4y as string, impliedRating5y as string, impliedRating6y as string, impliedRating7y as string, impliedRating8y as string, impliedRating9y as string, impliedRating10y as string)), resultData as (driversMain as string, driversTransition as (driversEntityPaths as string, driversIndustryPaths as string, driversRegionPaths as string)))[]",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'arrayOfDocuments') ~> source",
+				"source foldDown(unroll(entities),",
+				"     mapColumn(",
+				"          scenarioCategory,",
+				"          entities = entities.entityId,",
+				"          asOfDate = entities.asOfDate,",
+				"          isfin = entities.isfin,",
+				"          physicalRiskScore = entities.physicalRiskScore,",
+				"          transitionRisk = entities.transitionRisk,",
+				"          baseline = entities.baseline,",
+				"          resultData = entities.resultData",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flattenentities",
+				"flattenentities foldDown(unroll(),",
+				"     mapColumn(",
+				"          scenarioCategory,",
+				"          entities,",
+				"          asOfDate,",
+				"          isfin,",
+				"          physicalRiskScore",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"flatten1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          {10} as string,",
+				"          {6} as string,",
+				"          {12} as string,",
+				"          {2} as string,",
+				"          {14} as string,",
+				"          {george.bluth@reqres.in} as string,",
+				"          George as string,",
+				"          Bluth as string,",
+				"          {https://reqres.in/img/faces/1-image.jpg} as string,",
+				"          {https://reqres.in/#support-heading} as string,",
+				"          {To keep ReqRes free, contributions towards server costs are appreciated!} as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink"
+			]
+		}
+	}
+}

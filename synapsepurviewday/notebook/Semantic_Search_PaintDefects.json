@@ -1,0 +1,433 @@
+{
+	"name": "Semantic_Search_PaintDefects",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "400g",
+			"driverCores": 64,
+			"executorMemory": "400g",
+			"executorCores": 64,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "28932854-d960-4ee6-8c16-df164388f705"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/9c8ddc83-7afd-41e0-933d-bce1bbdd626a/resourceGroups/Purviewinaday/providers/Microsoft.Synapse/workspaces/synapsepurviewday/bigDataPools/sparkpool",
+				"name": "sparkpool",
+				"type": "Spark",
+				"endpoint": "https://synapsepurviewday.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.2",
+				"nodeCount": 3,
+				"cores": 64,
+				"memory": 400,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "golEYAY3lHVj"
+				},
+				"source": [
+					"# OpenAI Word Embeddings, Semantic Search\n",
+					"\n",
+					"Word embeddings are a way of representing words and phrases as vectors. They can be used for a variety of tasks, including semantic search, anomaly detection, and classification. In the video on OpenAI Whisper, I mentioned how words whose vectors are numerically similar are also similar in semantic meaning. In this tutorial, we will learn how to implement semantic search using OpenAI embeddings. Understanding the Embeddings concept will be crucial to build several practical applications.\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "bUPM0-8iLNK0",
+					"outputId": "e40c2740-102f-4f9e-b107-007d7d4d2ee5"
+				},
+				"source": [
+					"import openai\n",
+					"import re\n",
+					"import requests\n",
+					"import sys\n",
+					"import os\n",
+					"import pandas as pd\n",
+					"import numpy as np\n",
+					"import json\n",
+					"from openai.embeddings_utils import get_embedding, cosine_similarity\n",
+					"# from transformers import GPT2TokenizerFast\n",
+					""
+				],
+				"execution_count": 1
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"openai.api_type = \"azure\"\r\n",
+					"openai.api_key = \"929e92b53d4e416dae9250512536f8ec\"\r\n",
+					"openai.api_base = \"https://openai-sb.openai.azure.com/\"\r\n",
+					"openai.api_version = \"2022-12-01\""
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Update parameters for your environment\r\n",
+					"storage_account = 'datapoclake'\r\n",
+					"container_name = 'datasets'\r\n",
+					"subfolder = 'cognitive/datasets/OpenAI'\r\n",
+					"linkedServiceName = \"synapse-edge-WorkspaceDefaultStorage\"\r\n",
+					"\r\n",
+					"mssparkutils.fs.unmount(\"/openai\")\r\n",
+					"mssparkutils.fs.mount( \r\n",
+					"    f\"abfss://{container_name}@{storage_account}.dfs.core.windows.net/{subfolder}/\", \r\n",
+					"    \"/openai\", \r\n",
+					"    {\"linkedService\":linkedServiceName} \r\n",
+					") \r\n",
+					"\r\n",
+					"jobId = mssparkutils.env.getJobId() \r\n",
+					"print(f\"Job Id: {jobId}\")"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "9KXdnqkoyK9H"
+				},
+				"source": [
+					"# Read Data File Containing Words\n",
+					"\n",
+					"Now that we have configured OpenAI, let's start with a simple CSV file with familiar words. From here we'll build up to a more complex semantic search using sentences from the Fed speech. [Save the linked \"words.csv\" as a CSV](https://gist.github.com/hackingthemarkets/25240a55e463822d221539e79d91a8d0) and upload it to Google Colab. Once the file is uploaded, let's read it into a pandas dataframe using the code below:"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "rHJ-2gvfx9-J",
+					"outputId": "d31b80ff-407d-44d0-cea3-c76a44a41156"
+				},
+				"source": [
+					"df = pd.read_excel(f\"abfss://{container_name}@{storage_account}.dfs.core.windows.net/{subfolder}/data/PaintDefectVerbatim.xlsx\") \n",
+					"df"
+				],
+				"execution_count": 4
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "XwUiwvTmL71c"
+				},
+				"source": [
+					"# Calculate Word Embeddings\n",
+					"\n",
+					"To use word embeddings for semantic search, you first compute the embeddings for a corpus of text using a word embedding algorithm. What does this mean? We are going to create a numerical representation of each of these words. To perform this computation, we'll use OpenAI's 'get_embedding' function. \n",
+					"\n",
+					"Since we have our words in a pandas dataframe, we can use \"apply\" to apply the get_embedding function to each row in the dataframe. We then store the calculated word embeddings in a new text file called \"word_embeddings.csv\" so that we don't have to call OpenAI again to perform these calculations."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "0LFNfufoqToT",
+					"outputId": "adf20407-fc11-4b8b-aa03-f296a5e6e264"
+				},
+				"source": [
+					"get_embedding(\"the fox crossed the road\", engine='text-embedding-ada-002')"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"id": "CVUez91kL5kY"
+				},
+				"source": [
+					"from openai.embeddings_utils import get_embedding\n",
+					"\n",
+					"df['embedding'] = df['verbatim'].apply(lambda x: get_embedding(x, engine='text-embedding-ada-002'))\n",
+					"df.to_csv(f\"abfss://{container_name}@{storage_account}.dfs.core.windows.net/{subfolder}/data/paint_defect_embeddings.csv\")"
+				],
+				"execution_count": 6
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "e2WjqR_PzMtg"
+				},
+				"source": [
+					"# Semantic Search\n",
+					"\n",
+					"Now that we have our word embeddings stored, let's load them into a new dataframe and use it for semantic search. Since the 'embedding' in the CSV is stored as a string, we'll use apply() and to interpret this string as Python code and convert it to a numpy array so that we can perform calculations on it."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/",
+						"height": 865
+					},
+					"id": "yM6N30oYeWhs",
+					"outputId": "a2ec72f8-dff7-49f8-c1c2-e27602a26a5b"
+				},
+				"source": [
+					"df_embedding = pd.read_csv(f\"abfss://{container_name}@{storage_account}.dfs.core.windows.net/{subfolder}/data/paint_defect_embeddings.csv\")\n",
+					"df_embedding['embedding'] = df_embedding['embedding'].apply(eval).apply(np.array)\n",
+					"df_embedding"
+				],
+				"execution_count": 7
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "oCtyD-yZz-6W"
+				},
+				"source": [
+					"Let's now prompt ourselves for a search term that isn't in the dataframe. We'll use word embeddings to perform a semantic search for the words that are most similar to the word we entered. I'll first try the word \"hot dog\". Then we'll come back and try the word \"yellow\"."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "WtyaOReqzzn3",
+					"outputId": "d5cb4ce2-69d6-4a32-b4d3-7192f9af15db"
+				},
+				"source": [
+					"search_term = \"find color mismatch defects\"\n",
+					"# semantic search\n",
+					"search_term_vector = get_embedding(search_term, engine=\"text-embedding-ada-002\")\n",
+					"search_term_vector"
+				],
+				"execution_count": 10
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "kpFRGaAX0H82"
+				},
+				"source": [
+					"Now that we have a search term, let's calculate an embedding or vector for that search term using the OpenAI get_embedding function."
+				]
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "KVSNY0Ci0hB5"
+				},
+				"source": [
+					" Once we have a vector representing that word, we can see how similar it is to other words in our dataframe by calculating the cosine similarity of our search term's word vector to each word embedding in our dataframe."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/",
+						"height": 865
+					},
+					"id": "BhE3ATG80oAt",
+					"outputId": "0e5e664c-59c7-4451-e443-b6740fdeac2f"
+				},
+				"source": [
+					"from openai.embeddings_utils import cosine_similarity\n",
+					"\n",
+					"df_embedding[\"similarities\"] = df_embedding['embedding'].apply(lambda x: cosine_similarity(x, search_term_vector))\n",
+					"\n",
+					"df_embedding"
+				],
+				"execution_count": 11
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "VsqkYbCD05TC"
+				},
+				"source": [
+					"# Sorting By Similarity\n",
+					"\n",
+					"Now that we have calculated the similarities to each term in our dataframe, we simply sort the similarity values to find the terms that are most similar to the term we searched for. Notice how the foods are most similar to \"hot dog\". Not only that, it puts fast food closer to hot dog. Also some colors are ranked closer to hot dog than others. Let's go back and try the word \"yellow\" and walk through the results."
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/",
+						"height": 677
+					},
+					"id": "5_4bDAkOg2m7",
+					"outputId": "e8fcacf1-5ff3-4b39-c1a0-a4969bf8d8b1"
+				},
+				"source": [
+					"df_embedding.sort_values(\"similarities\", ascending=False).head(20)"
+				],
+				"execution_count": 12
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"id": "CC0UgmJeCM36"
+				},
+				"source": [
+					"# Calculating Cosine Similarity\n",
+					"\n",
+					"We used the Cosine Similarity function, but how does it actually work? Cosine similarity is just calculating the similarity between two vectors. There is a mathematical equation for calculating the angle between two vectors. \n",
+					"\n",
+					"![](https://drive.google.com/uc?export=view&id=1cehvtx7LKuFeq_LqfnLi-gzIz1D1wSf9)"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "ws7hh97DATIO",
+					"outputId": "32d1d9eb-e604-4a2f-b16f-afbcbf3900b6"
+				},
+				"source": [
+					"v1 = np.array([1,2,3])\n",
+					"v2 = np.array([4,5,6])\n",
+					"\n",
+					"# (1 * 4) + (2 * 5) + (3 * 6)\n",
+					"dot_product = np.dot(v1, v2)\n",
+					"dot_product"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "pz18oXLhBhs3",
+					"outputId": "e9e1c737-81f9-44a2-d5ca-96475d7e8d70"
+				},
+				"source": [
+					"# square root of (1^2 + 2^2 + 3^2) = square root of (1+4+9) = square root of 14\n",
+					"np.linalg.norm(v1)"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "RHpa6BhjCA1F",
+					"outputId": "a420f7dd-8fb0-43f7-89d8-336bb521aa3d"
+				},
+				"source": [
+					"# square root of (4^2 + 5^2 + 6^2) = square root of (16+25+36) = square root of 14\n",
+					"np.linalg.norm(v2)"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "VuxTawPcAYGA",
+					"outputId": "cd8760d9-c6c2-47dc-9f23-adfcf8d9caea"
+				},
+				"source": [
+					"magnitude = np.linalg.norm(v1) * np.linalg.norm(v2)\n",
+					"magnitude"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "qIyzZ3vABa5I",
+					"outputId": "9f8835cb-9832-4835-915f-2d21414243ec"
+				},
+				"source": [
+					"dot_product / magnitude"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"colab": {
+						"base_uri": "https://localhost:8080/"
+					},
+					"id": "n5Ppa9jsBAU1",
+					"outputId": "88c3e5cf-da1b-46e7-bdf9-77cf9ac7bbf6"
+				},
+				"source": [
+					"from scipy import spatial\n",
+					"\n",
+					"result = 1 - spatial.distance.cosine(v1, v2)\n",
+					"\n",
+					"result"
+				]
+			}
+		]
+	}
+}

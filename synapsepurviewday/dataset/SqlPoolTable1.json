@@ -1,0 +1,86 @@
+{
+	"name": "SqlPoolTable1",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [
+			{
+				"name": "C1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C5",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C6",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C7",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C8",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C9",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C10",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C11",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C13",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C14",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C15",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C16",
+				"type": "nvarchar"
+			},
+			{
+				"name": "C17",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "testpspc"
+		},
+		"sqlPool": {
+			"referenceName": "pspc_dw",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

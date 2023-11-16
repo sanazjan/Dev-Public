@@ -1,0 +1,17 @@
+{
+	"name": "Serverless View Creation",
+	"properties": {
+		"content": {
+			"query": "CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Setup you password - you need to create master key only once';\nCREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity\nWITH IDENTITY = 'Managed Identity';\nGO\nCREATE EXTERNAL DATA SOURCE [sj_external_par] WITH (\n    LOCATION = N'abfss://fssynapseacc@stgsynapseacc.dfs.core.windows.net',\n    CREDENTIAL = WorkspaceIdentity\n);\n\ncreate view sj_view as \nSELECT *\nFROM\n    OPENROWSET(\n        BULK 'product.parquet',\n        FORMAT = 'parquet',\n        DATA_SOURCE= 'sj_external_par'\n    ) AS [result]\n\n--select prop_0 from sj_view\n\n\nCREATE USER [pbi1@mngenv544380.onmicrosoft.com] FROM EXTERNAL PROVIDER;\nCREATE LOGIN [pbi1@mngenv544380.onmicrosoft.com] from external PROVIDER\n-- Grant permission to use scope credential \nGRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::WorkspaceIdentity TO [pbi1@mngenv544380.onmicrosoft.com]\nGO\n--Grant select permission object level \n--REVOKE SELECT ON OBJECT::dbo.sj_view to [pbi1@mngenv544380.onmicrosoft.com]\nGRANT SELECT ON OBJECT::dbo.sj_view to [pbi1@mngenv544380.onmicrosoft.com]\n-- Grant select permission at schema level \nGRANT SELECT ON SCHEMA::dbo TO [pbi1@mngenv544380.onmicrosoft.com]\nGO\n--Grant permission at DB level \nALTER ROLE db_owner ADD MEMBER [pbi1@mngenv544380.onmicrosoft.com]\n\n\n\n-- \n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "servelessDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"name": "config",
+	"properties": {
+		"configs": {
+			"API_KEY": "= os.getenv(\"AZURE_OPENAI_API_KEY\")",
+			"RESOURCE_ENDPOINT": "= os.getenv(\"AZURE_OPENAI_ENDPOINT\")"
+		},
+		"created": "2023-06-14T17:09:12.62Z",
+		"createdBy": "admin@MngEnv544380.onmicrosoft.com",
+		"configMergeRule": {
+			"artifact.currentOperation.API_KEY": "replace",
+			"artifact.currentOperation.RESOURCE_ENDPOINT": "replace"
+		}
+	}
+}
